@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+		// 获取 url 中的参数
+		// 1. 指定参数名称，返回该参数的值 或者 空字符串
+		// 2. 不指定参数名称，返回全部的参数对象 或者 {}
+		// 3. 如果存在多个同名参数，则返回数组
+		// 4. 不支持URLSearchParams方法
+		// var url = 'http://www.nowcoder.com?key=1&key=2&key=3&test=4#hehe';
+		// function getUrlParam(sUrl, sKey) {
+		//     let params = sUrl.split('?')[1].split('#')[0].split('&');
+		// 	var keyArr = []
+		// 	for(var i = 0; i < params.length; i++){
+		// 		if(params[i].indexOf('key') > -1){
+		// 			keyArr.push(params[i].slice(params[i].indexOf('=') + 1))
+		// 		}
+		// 	}
+		// 	return keyArr;
+		// }
+		// console.log(getUrlParam(url,'key'))
+		// onload(){
+		// 	// this.fun1()
+		// 	// this.fun2()
+		// 	// new Promise(function(resolve){
+		// 	// 	this.fun1();
+		// 	// 	resolve();
+		// 	// }).then(() => {
+		// 	// 	this.fun2();
+		// 	// })
+		// 	fun1(url).then((data) => {
+		// 		return fun2(data)
+		// 	})
+		// }
+		// async function fun1(url){
+		// 	var p = new Promise(function(resolve,reject){
+		// 		axios.post(url).then(res => {
+		// 			if(res.status == 200){
+		// 				resolve(res.data)
+		// 			}else{
+		// 				reject('报错')
+		// 			}
+		// 		})
+		// 	})
+		// 	return p;
+		// }
+		// function fun2(){
+		// 	var p = new Promise(function(resolve,reject){
+		// 		axios.post(url).then(res => {
+		// 			if(res.status == 200){
+		// 				resolve(res.data)
+		// 			}else{
+		// 				reject('报错')
+		// 			}
+		// 		})
+		// 	})
+		// 	return p;
+		// }
+		
+		function Animal(){
+			this.eat = function (){
+				console.log('Animal eat')
+			}
+		}
+		
+		function Dog(){
+			this.bark = function (){
+				console.log('dog bark')
+			}
+		}
+		
+		Dog.prototype = new Animal();
+		var hsq = new Dog();
+		hsq.eat()
+		</script>
+	</body>
+</html>

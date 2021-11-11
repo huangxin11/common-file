@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var str = "gudigudigggudi";
+			var o = {}
+			for (var i = 0; i < str.length; i++) {
+				var char = str.charAt(i);
+				if (o[char]) {
+					o[char]++;
+				} else {
+					o[char] = 1;
+				}
+			}
+			// console.log(o)
+			var max = 0;
+			for (var j in o) {
+				if (max < o[j]) {
+					max = o[j]
+				}
+			}
+			for (var z in o) {
+				if (o[z] == max) {
+					console.log(`字符串中出现次数最多的字符为${z},出现的次数为${max}`)
+				}
+			}
+		</script>
+
+	</body>
+</html>

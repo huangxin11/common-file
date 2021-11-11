@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			/**
+			 * 第一种方式(父标签加上overflow)
+			 */
+			/* li{
+				list-style: none;
+				width: 100px;
+				height: 100px;
+				float: left;
+				background: red;
+				margin-left: 20px;
+			}
+			ul{
+				background-color: pink;
+				padding: 0;
+				margin: 0;
+				overflow: auto;
+			} */
+			/**
+			 * 第二种方式(clear:both)
+			 */
+			/* li{
+				list-style: none;
+				width: 100px;
+				height: 100px;
+				float: left;
+				background: red;
+				margin-left: 20px;
+			}
+			ul{
+				background-color: pink;
+				padding: 0;
+				margin: 0;
+			}
+			div{
+				clear: both;
+			} */
+			/**
+			 * 第三种方式
+			 */
+			li{
+				list-style: none;
+				width: 100px;
+				height: 100px;
+				float: left;
+				background: red;
+				margin-left: 20px;
+			}
+			ul{
+				background-color: pink;
+				padding: 0;
+				margin: 0;
+			}
+			ul:after{
+				clear: both;
+				display: block;
+				content: '';
+			}
+			
+		</style>
+	</head>
+	<body>
+		<ul>
+			<li></li>
+			<li></li>
+			<div></div>
+		</ul>
+	</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<div id="box">
+			<navbar></navbar>
+			<input type="text" v-model="string" @input="handleString" />
+		</div>
+		<script type="text/javascript">
+			Vue.component("navbar", {
+				template: `<div>
+					<button>返回</button>
+						navbar
+					<button>首页</button>
+				</div>`,
+			})
+			new Vue({
+				el: "#box",
+				data: {
+					string: ''
+				},
+				methods:{
+					handleString(){
+						console.log(this.string)
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

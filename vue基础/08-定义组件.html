@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<div id="box">
+			<navbar></navbar>
+			<sidebar></sidebar>
+		</div>
+		<script type="text/javascript">
+			Vue.component("navbar", {
+				template: `<div style="background:yellow">
+					<button @click="handleback()">返回</button>
+					navbar ---- {{navbarName}}
+					<button>主页</button>
+					<child></child>
+					<navbarchild></navbarchild>
+				</div>`,
+				methods: {
+					handleback() {
+						console.log("back")
+					}
+				},
+				data() {
+					return {
+						navbarName: 'navbarname'
+					}
+
+				},
+				components: {
+					navbarchild: {
+						template: `<div>只能在navbar中使用</div>`
+					}
+				}
+			})
+			Vue.component("child", {
+				template: `<div>child组件-全局组件</div>`
+			})
+			Vue.component("sidebar", {
+				template: `
+				<div>
+					sider组件
+					<child></child>
+				</div>`
+			})
+			new Vue({
+				el: "#box",
+			})
+		</script>
+	</body>
+</html>

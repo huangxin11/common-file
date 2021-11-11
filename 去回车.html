@@ -1,0 +1,25 @@
+﻿<!doctype html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <title>Document</title>
+ <script type="text/javascript">
+  function action()
+  {
+  	var sour=document.getElementById("s").value;
+        var r=document.getElementById("r");
+  	sour=sour.replace(/[\r\n]+/g," ");
+  	while(/\s{2,}/.test(sour))
+  	{
+  		sour=sour.replace(/\s{2,}/g," ");
+  	}
+  	r.value=sour.replace(/^\s+|\s+$/g,"");	
+  }
+ </script>
+  </head>
+  <body>
+      <textarea id="s" style="height:300px;width:400px"></textarea>
+ 	   <button onclick="action()">处理</button>
+ 	   <textarea id="r" style="height:300px;width:400px"></textarea>
+  </body>
+ </html>

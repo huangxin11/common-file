@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>太极图旋转</title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+
+			.box {
+				width: 300px;
+				height: 300px;
+				margin: 100px auto;
+				position: relative;
+				animation: move 2s infinite linear;
+			}
+
+			.box div:nth-of-type(1) {
+				width: 300px;
+				height: 300px;
+				border-radius: 50%;
+			}
+
+			.box div:nth-of-type(2) {
+				width: 150px;
+				height: 300px;
+				border-top-right-radius: 150px;
+				border-bottom-right-radius: 150px;
+				background-color: #FFFFFF;
+				position: absolute;
+				left: 150px;
+				top: 0;
+				border: 1px solid #CECECE;
+			}
+
+			.box div:nth-of-type(3) {
+				width: 150px;
+				height: 300px;
+				border-top-left-radius: 150px;
+				border-bottom-left-radius: 150px;
+				background-color: black;
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+
+			.box div:nth-of-type(4) {
+				width: 150px;
+				height: 150px;
+				border-radius: 50%;
+				background-color: #000000;
+				position: absolute;
+				top: 0;
+				left: 75px;
+			}
+
+			.box div:nth-of-type(5) {
+				width: 150px;
+				height: 150px;
+				border-radius: 50%;
+				background-color: #FFFFFF;
+				position: absolute;
+				bottom: 0;
+				left: 75px;
+			}
+
+			.box div:nth-of-type(6) {
+				width: 40px;
+				height: 40px;
+				border-radius: 50%;
+				background-color: #FFFFFF;
+				position: absolute;
+				top: 55px;
+				left: 150px;
+			}
+
+			.box div:nth-of-type(7) {
+				width: 40px;
+				height: 40px;
+				border-radius: 50%;
+				background-color: black;
+				position: absolute;
+				bottom: 55px;
+				left: 150px;
+			}
+
+			@keyframes move {
+				from {
+					transform: rotate(0deg);
+				}
+
+				to{
+					transform: rotate(360deg);
+				}
+			}
+			@keyframes move1 {
+				from {
+					transform: rotate(360deg);
+				}
+			
+				to{
+					transform: rotate(0deg);
+				}
+			}
+			.box:nth-of-type(2){
+				animation: move1 2s infinite linear;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+		<div class="box">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+	</body>
+</html>

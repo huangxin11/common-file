@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<div id="box">
+			<button type="button" @click="handleClick">click1</button>
+			<button type="button" @click="handleClick()">click2</button>
+			<button type="button" @click="isshow = !isshow">click3</button>
+			<div v-show="isshow">1111111</div>
+
+
+
+
+			<ul @click.self="handleUlClick()">
+				<li @click.stop="handleLiClick()">1111111</li>
+				<li @click="handleLiClick()">2222222</li>
+				<li @click.once="handleLiClick()">3333333</li>
+			</ul>
+
+			<a href="http://baidu.com" @click.prevent="handlechangepage()">changepage</a>
+			
+			
+			<input type="text" @keyup.13="handleKeyup()"/>
+		</div>
+		<script type="text/javascript">
+			var vm = new Vue({
+				el: "#box",
+				data: {
+					isshow: false
+				},
+				methods: {
+					handleClick() {
+						this.isshow = !this.isshow
+					},
+					handleLiClick(ev) {
+						console.log('li click')
+					},
+					handleUlClick() {
+						console.log('ul click')
+					},
+					handlechangepage() {
+						console.log('handlechangepage')
+					},
+					handleKeyup(ev){
+						console.log("执行todolist enter")
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

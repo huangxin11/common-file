@@ -1,0 +1,145 @@
+
+1.从微信公众号拉去素材保存在数据库中
+·取出素材列表，循环获取数据，获取数据保存数据表。
+	取出的素材参数可能高于20条数据
+	保存数据表时判断数据表中是否存在这个id，如果存在这个id就判断修改时间是否相同，当修改时间不同时就修改这条数据
+
+
+	问题：
+		当数据表中的同一个id下存在两条不同的数据怎么处理
+			获取素材后有判断news_item中是否存在多条数据
+			根据id和url判断是否是同一个文章，然后判断update_time时间是否改变
+		当取出数据高于二十条时，如何循环取出所有的素材
+
+		
+2.通过后台设置的标签添加属于文章的标签
+·文章标题中如果有该标签内容就添加标签
+·文章内容中有该标签内容，根据配置的次数，大于该次数就记录标签，如果没有达到该次数就不记录标签
+
+
+
+
+获取标签和文章的关联
+·获取所有的标签已经完成
+·循环获取文章，每次二十条，已完成
+·循环二十条数据，内部再循环所有的标签，保证每条数据会跟每个标签进行比对 已完成
+·通过当前的条的id到标签文章关联表中查找是否有这个标签和文章的关联数据，如果没有就进行添加操作，如果有就进行修改操作
+·如果这个文章对应多个标签，就循环标签通过标签的id，文章的id，修改
+
+如何显示标签
+	·
+添加标签的操作
+	·点击添加标签按钮，跳转页面，传递用户id参数，
+	·根据用户id获取
+
+
+
+获取评论：
+	现用循环获取每个评论
+	如何优化：
+	一级评论 二级评论 分开获取？？？点击获取二级评论以及更多评论，js构建html（最好）
+	现有基础上，一起获取？？ 点击获取更多评论，
+
+
+APP列表：
+	请求接口获取相应的数据,通过flatlist组件构造页面1
+	文件中除渲染页面的方法外，还有业务逻辑处理代码，在flatlist中调用
+
+	·跳转到页面中，页面内调用接口看是否是登陆状态，未登陆跳转到登陆界面，登陆显示最近问诊页面
+	·在入口处调用this.props.navigation.dispatch(goRecentlyInquiry(params));到最近问诊页面
+	·新页面接收参数 this.props.navigation.state.params.参数名
+	·咋个取uid？
+	·接收到接口数据的怎么处理？（登陆/未登录）
+	·appNavigators.js 中添加RecentlyInquiry会报错
+
+app:
+	新增页面在appNavigators.js文件中声明screen
+
+
+ user.data((localData) => {
+            this.props.navigation.dispatch(goRecentlyInquiry({
+                user_id: localData.data.id
+            }));
+        },
+        );     
+
+	
+	有问必答:
+		新增表关联正在使用的表，保存每一天的数据（关联id,权重，状态，推荐次数，当天日期，是否同步）
+		在设置页面中，今天之前的数据，只能查看，今天及其以后的可以修改，今天修改后两表同步更新，未来日期修改现在新增表中生成数据，是否同步字段为否，日期到后更新到原表
+		新增，修改二维码，状态是操作原表，其他操作基本是新增表
+
+		问题：1、图片如何上传到什么地方 2、如何检测当天表中是否有数据 3、权重如何计算
+
+//推荐时的修改方法
+修改service.php中的get_weixin_img_url方法，将表p_customer_service 修改为p_customer_service_new。
+	_get_rand_weixin方法中，表名修改为p_customer_service_new
+//后台操作的修改方法
+
+进入页面时判断是否有没有被同步的数据，判断p_customer_record表中是否存在当天的数据，不存在数据说明是新的一天，有的话就判断是否同步过
+
+如何让每天的数据保存在p_customer_record表中？？如何让P_customer_service_new 表的hit每天清空？？？。。
+
+图片上传到文件家中，user_code文件夹。
+
+
+进入页面，这一周的所有数据保存至record表中。
+判断今日的数据是否和record表中同步，同步就显示，未同步就先同步，在显示
+
+
+
+
+操作日志
+	新增人(1)，修改用户名(2)，修改权重(3),修改状态(4),修改渠道(5),修改微信名(6),上传二维码(7),删除用户（8）
+
+p_customer_operation_log
+
+日志方法需要传什么参数： （客户id，记录时间，操作中被修改的数据，是什么操作）
+/common/customer/customer_15656256001.png
+/common/customer/customer_15657120001.png
+1.今日修改，同步到后面几天
+2.预设值，再当天用户访问前台方法或者客服进入设置页面，同步预设值到service_new表中
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import { DatePicker } from 'antd';
+
+function App() {
+  return (
+    <div style={{ margin: 100 }}>
+      <h1>AntDesign Demo</h1>
+      <hr /><br />
+      <DatePicker />
+    </div>
+  );
+}
+
+ReactDOM.render(<App />, document.getElementById('root'));
+
+
+
+components ->公共UI
+models -> 处理数据和逻辑
+	-->model方法中带有namespace（命名空间），用于引入时分辨
+
+	
+
+Commom  公共部分，导航，底部栏等
+Component  所有页面
+Image 图片等文件
+Routes 路由
+Utils  工具类
+
+
+
+表格页面，columns定义表头，并且定义显示的样式，data给予数据
+
+
+今日头条：http://www.yang-baba.net/service/weixin/9 				通用：http://www.yang-baba.net/service/weixin/1	
+
+
+
+
+
+Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjU2ZGFiODM0Y2VlZTRmYmI4MzdkMWJmMWQ0NDQxYjhlIiwidHlwIjoiSldUIn0.eyJuYmYiOjE1NzE2NDYxOTIsImV4cCI6MTU3MjI1MDk5MiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDoyMDAwL2lkZW50aXR5LyIsImF1ZCI6WyJodHRwOi8vbG9jYWxob3N0OjIwMDAvaWRlbnRpdHkvcmVzb3VyY2VzIiwic3lzdGVtQXBpIiwidXNlckFwaSJdLCJjbGllbnRfaWQiOiJtaXMuanMuY2xpZW50Iiwic3ViIjoianN3IiwiYXV0aF90aW1lIjoxNTcxNjE3MzkyLCJpZHAiOiJsb2NhbCIsIlVzZXJJZCI6IjE0MjMyMDAwNDYzMTIiLCJMb2dpbk5hbWUiOiJqc3ciLCJUZWwiOiIxODQ4MjA0MjI0NSIsIk5pY2siOiJqc3ciLCJzY29wZSI6WyJvcGVuaWQiLCJwcm9maWxlIiwic3lzdGVtQXBpIiwidXNlckFwaSIsIm9mZmxpbmVfYWNjZXNzIl0sImFtciI6WyJjdXN0b20iXX0.X1fKPFRoe2fHrlT9Sa4_fx9PVe32P9PY4P5Pneg-BSh4eJwX6JHANOWfnzd77GsyOFEf9B5pb60Lyh9x1xsMkogaPKU0ohNavRGa19vaU4oiLqVhhTAY9JEQicB_8f4dht8NQxoJLOeimdtkDwELHxM6Nu9-QXpH7A7s1S30lgFd45RNyDqt7aeo0yi-H11FsAxkJrFtDQmi2yaRNRELPRUX28m57bWpHKjGOLqWOnEMcF96A7mn3ypo4bn7MJsQlyAW5C2gk2uVdPoeNZ9wp9pgmZ0lJOviljAumWdlpauEuEA0b7jHnEBN2arfixKRRzlewdIVBuX1dabDB7LC9A

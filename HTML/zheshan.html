@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>折扇打开图</title>
+		<style type="text/css">
+			.box{
+				width: 600px;
+				height: 230px;
+				border-bottom: 3px solid #333;
+				margin: 100px auto;
+				position: relative;
+			}
+			.box div{
+				width: 60px;
+				height: 200px;
+				position: absolute;
+				left: 230px;
+				box-shadow: 3px 3px 5px #333;
+				transition: all 1s linear;
+				transform-origin: center bottom;
+			}
+			.box div:nth-of-type(1){background-color: red;}
+			.box div:nth-of-type(2){background-color: yellow;opacity: 0;}
+			.box div:nth-of-type(3){background-color: blue;opacity: 0;}
+			.box div:nth-of-type(4){background-color: burlywood;opacity: 0;}
+			.box div:nth-of-type(5){background-color: skyblue;opacity: 0;}
+			.box div:nth-of-type(6){background-color: yellowgreen;opacity: 0;}
+			.box div:nth-of-type(7){background-color: royalblue;opacity: 0;}
+			.box div:nth-of-type(8){background-color: royalblue;opacity: 0;}
+			.box div:nth-of-type(9){background-color: yellowgreen;opacity: 0;}
+			.box div:nth-of-type(10){background-color: skyblue;opacity: 0;}
+			.box div:nth-of-type(11){background-color: burlywood;opacity: 0;}
+			.box div:nth-of-type(12){background-color: blue;opacity: 0;}
+			.box div:nth-of-type(13){background-color: yellow;opacity: 0;}
+			.box:hover div:nth-of-type(2){transform: rotate(15deg);opacity: 1;}
+			.box:hover div:nth-of-type(3){transform: rotate(30deg);opacity: 1;}
+			.box:hover div:nth-of-type(4){transform: rotate(45deg);opacity: 1;}
+			.box:hover div:nth-of-type(5){transform: rotate(60deg);opacity: 1;}
+			.box:hover div:nth-of-type(6){transform: rotate(75deg);opacity: 1;}
+			.box:hover div:nth-of-type(7){transform: rotate(90deg);opacity: 1;}
+			.box:hover div:nth-of-type(8){transform: rotate(-90deg);opacity: 1;}
+			.box:hover div:nth-of-type(9){transform: rotate(-75deg);opacity: 1;}
+			.box:hover div:nth-of-type(10){transform: rotate(-60deg);opacity: 1;}
+			.box:hover div:nth-of-type(11){transform: rotate(-45deg);opacity: 1;}
+			.box:hover div:nth-of-type(12){transform: rotate(-30deg);opacity: 1;}
+			.box:hover div:nth-of-type(13){transform: rotate(-15deg);opacity: 1;}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<div>1</div>
+			<div>2</div>
+			<div>3</div>
+			<div>4</div>
+			<div>5</div>
+			<div>6</div>
+			<div>7</div>
+			<div>7</div>
+			<div>6</div>
+			<div>5</div>
+			<div>4</div>
+			<div>3</div>
+			<div>2</div>
+		</div>
+	</body>
+</html>

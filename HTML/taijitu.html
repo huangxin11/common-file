@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>太极图旋转</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+
+			.cieclebox {
+				width: 300px;
+				height: 300px;
+				margin: 100px auto;
+				position: relative;
+				animation: move 5s infinite linear;
+			}
+
+			.ciecleblack {
+				width: 300px;
+				height: 300px;
+				background: black;
+				border-radius: 50%;
+			}
+
+			.cieclewhite {
+				width: 150px;
+				height: 300px;
+				border-top-right-radius: 150px;
+				border-bottom-right-radius: 150px;
+				background: #FFFFFF;
+				position: absolute;
+				top: 0;
+				left: 150px;
+			}
+
+			.cieclebb {
+				width: 150px;
+				height: 150px;
+				background-color: black;
+				border-radius: 50%;
+				position: absolute;
+				top: 0;
+				left: 75px;
+			}
+
+			.ciecleww {
+				width: 150px;
+				height: 150px;
+				background-color: white;
+				border-radius: 50%;
+				position: absolute;
+				top: 150px;
+				left: 75px;
+			}
+
+			.cieclewwl {
+				width: 40px;
+				height: 40px;
+				background: white;
+				border-radius: 50%;
+				position: absolute;
+				top: 55px;
+				left: 130px;
+			}
+
+			.cieclebbl {
+				width: 40px;
+				height: 40px;
+				background: black;
+				border-radius: 50%;
+				position: absolute;
+				top: 210px;
+				left: 130px;
+			}
+
+			@keyframes move {
+				from {
+					transform: rotate(0deg);
+				}
+
+				to {
+					transform: rotate(360deg);
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="cieclebox">
+			<div class="ciecleblack"></div>
+			<div class="cieclewhite"></div>
+			<div class="cieclebb"></div>
+			<div class="ciecleww"></div>
+			<div class="cieclebbl"></div>
+			<div class="cieclewwl"></div>
+		</div>
+	</body>
+</html>

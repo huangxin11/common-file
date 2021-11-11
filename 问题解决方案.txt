@@ -1,0 +1,14 @@
+1. minify 压缩与合并js\css文件，减少请求数加载失败时:
+	删除缓存文件，重新加载缓存
+2.微信授权报错，（对象已转移）
+	用户名中常有字符存在，保存昵称的字段需要utf8mb4字符集，链接数据库也需要用utf8mb4格式
+3.社区链接中存在中文字符，加载不出内容
+	get传值时将中文字符编码改变，使用mb_detect_encoding函数判断当前字符编码，如果不是utf8使用iconv改变字符的编码如：
+	$encode = mb_detect_encoding($_GET['id'], array('ASCII','UTF-8','GB2312','GBK','BIG5','EUC-CN'));
+        	if ($encode != 'UTF-8') $_GET['id'] = iconv($encode,'UTF-8',$_GET['id']);
+4.tp5+windows的定时任务
+	修改php.ini的date_timeout= PRC
+	跨模块调用控制器的方法，action中需要填写 模块/控制器/方法
+5.php连接符的使用
+	逗号可以用来作为echo输出的连接符，.号是公认连接符，逗号的效率要比"."的效率高
+        	

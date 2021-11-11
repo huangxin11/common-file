@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<div id="box">
+			<child>
+				<div>aaaaaaaaa</div>
+			</child>
+			<swiper>
+				<li v-for="data in datalist">
+					{{data}}
+				</li>
+			</swiper>
+		</div>
+		<script type="text/javascript">
+			Vue.component("child",{
+				template:`<div>
+					child
+					<slot></slot>
+				</div>`
+			})
+			Vue.component("swiper",{
+				template:`<div>
+					<ul>
+						<slot></slot>
+					</ul>
+				</div>`
+			})
+			new Vue({
+				el:'#box',
+				data:{
+					datalist:['1111','2222','3333']
+				}
+			})
+		</script>
+	</body>
+</html>

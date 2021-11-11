@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/**
+			 * 原型链继承 （不可赋值）
+			 */
+			// function Parent() {
+			// 	this.names = ["kevin","daisy"];
+			// }
+			// Parent.prot
+			// otype.getName = function() {
+			// 	console.log(this.names);
+			// }
+
+			// function Child() {
+
+			// }
+			// Child.prototype = new Parent();
+			// var child1 = new Child();
+			// child1.names.push('yayu');
+			// console.log(child1.names);
+			// var child2 = new Child();
+			// console.log(child2.names)
+			/**
+			 * 第二种，构造函数继承 (可赋值,每实例一次就会创建一次方法)
+			 */
+			// function Parent() {
+			// 	this.names = ['kevin', 'daisy'];
+			// }
+
+			// function Child() {
+			// 	Parent.call(this);
+			// }
+
+			// var child1 = new Child();
+			// child1.names.push('yayu');
+			// console.log(child1.names);
+			// var child2 = new Child();
+			// console.log(child2.names)
+			// function Parent(name) {
+			// 	this.name = name;
+			// }
+
+			// function Child(name) {
+			// 	Parent.call(this,name);
+			// }
+			// var child1 = new Child('kevin');
+			// console.log(child1.name)
+			/**
+			 * 组合继承
+			 */
+			function Parent(name) {
+				this.name = name;
+				this.colors = ['red', 'blue', 'green'];
+			}
+			Parent.prototype.getName = function() {
+				console.log(this.name);
+			}
+
+			function Child(name, age) {
+				Parent.call(this, name);
+				this.age = age;
+			}
+			Child.prototype = new Parent();
+			Child.prototype.constructor = Child;
+			var child1 = new Child('kevin', '18')
+			child1.colors.push('black');
+			console.log(child1.name);
+			console.log(child1.age);
+			console.log(child1.colors);
+		</script>
+	</body>
+</html>

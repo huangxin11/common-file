@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<div id="box">
+			<navbar @myevent="handleEvent()">
+				</navbar>
+				<sidebar v-show="isShow"></sidebar>
+		</div>
+		<script type="text/javascript">
+			Vue.component("navbar", {
+				template: `<div>
+					navbar
+					<button @click="handleClick">navbar-button</button>	
+				</div>`,
+				methods: {
+					handleClick() {
+						this.$emit('myevent')
+					}
+				}
+
+			})
+			Vue.component("sidebar", {
+				template: `
+					<div style="background:yellow;width:200px">
+					<ul>
+						<li>1111111</li>
+						<li>1111111</li>
+						<li>1111111</li>
+					</ul>
+				</div>`
+			})
+			new Vue({
+				el: '#box',
+				data: {
+					isShow: false
+				},
+				methods: {
+					handleEvent(ev) {
+						this.isShow = !this.isShow
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

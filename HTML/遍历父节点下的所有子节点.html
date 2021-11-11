@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>遍历父节点下的所有子节点</title>
+	</head>
+	<body>
+		<div id="A">
+			<ul>
+				<li>111</li>
+				<li>222</li>
+				<li>333</li>
+				<li>444</li>
+				<li>555</li>
+			</ul>
+		</div>
+		<script type="text/javascript">
+			 var b=document.getElementById("A").parentNode.children;
+			 console.log(b)
+			// for(var i = 0; i < b[0].length; i++){
+			// 	console.log(b[i])
+			// }
+		</script>
+	</body>
+</html>

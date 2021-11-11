@@ -1,0 +1,56 @@
+1.创建远程仓库
+git init
+git add .
+
+
+2.第一次拉取或者第一次提交远程仓库
+//初始化git
+git init 
+
+//配置账号邮箱
+git config --global user.name "<<name>>"
+git config --global user.email "<<email>>"
+
+//配置远程仓库连接
+git remote add origin << url >>
+
+//查看是否配置成功
+git remote -v
+
+//添加代码到暂存区
+git add .
+git commit -m '备注'
+
+//查看状态
+git status
+
+//推送
+git push - origin master 
+
+3.新建远程分支
+
+//新建分支并切换
+git checkout -b '分支名'
+
+//查看当前分支状况
+git branch
+
+//推送本地分支到远程服务器 (本地分支名和远程分支名相同)
+git push origin 分支名:分支名
+
+//查看所有分支 (看到新建分支说明创建成功)
+git branch -a
+
+//删除远程分支
+(推送空分支到远程分支，相当于删除新分支)
+git push origin :（需要删除的分支名）
+(常规删除方式)
+git push origin --delete (需要删除的分支名)
+
+
+4.git忽略某个文件
+//新建一个.gitignore的文件
+touch .gitignore
+//将需要忽略的文件夹或文件添加到.gitignore中
+//查看状态
+git status
